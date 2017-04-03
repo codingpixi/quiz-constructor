@@ -8,33 +8,23 @@
 </head>
 
 <body>
-    <h1>In Theatres</h1>
+    <h1>Today's Quiz</h1>
     <div class="handlebars-demo"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
 
-    <script id="movieListing-template" type="text/x-handlebars-template">
-        <!-- <div class="entry"> -->
-            <div class="body">
-                <!-- <div class="container"> -->
-                    <!-- <div class="left"> -->
-                        <img src="https://image.tmdb.org/t/p/w500/{{poster_path}}" />
-                    <!-- </div> -->
-                    <!-- <div class="right"> -->
-                        <h2>{{title}}</h2>
-                        <em>Genre {{genere_ids}}</em><br>
-                        <em>Revenue: ${{revenue}}</em><br>
-                        <em>Budget: ${{budget}}</em><br>
-                        <em>Release: {{release_date}}</em><br>
-                        <em>Runtime: {{runtime}} minutes</em><br>
-                        <em>Rating: {{vote_average}}</em>
-                        <p><strong>Overview</strong> <br>{{overview}}</p>
-                    <!-- </div> -->
-                <!-- </div> -->
-            </div>
-        <!-- </div> -->
+    <script id="quiz-template" type="text/x-handlebars-template">
+        <div class="body">
+            <p>{{quizQuestion}}</p>
+            <form class="" action="index.html" method="post">
+                <legend>{{quizQuestion}}</legend>
+                <input type="radio" name="answer" value="a" />{{correctAnswer}}<br>
+                <input type="radio" name="answer" value="b" />{{choiceB}}<br>
+                <input type="radio" name="answer" value="c" />{{choiceC}}<br>
+                <input type="radio" name="answer" value="d" />{{choiceD}}<br>
+            </form>
+        </div>
     </script>
-
 
 
 
