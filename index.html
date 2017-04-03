@@ -15,18 +15,16 @@
 
     <script id="quiz-template" type="text/x-handlebars-template">
         <div class="body">
-            <p>{{quizQuestion}}</p>
+
+            <p>{{question}}</p>
+
             <form class="" action="index.html" method="post">
-                <legend>{{quizQuestion}}</legend>
-                <input type="radio" name="answer" value="a" />{{correctAnswer}}<br>
-                <input type="radio" name="answer" value="b" />{{choiceB}}<br>
-                <input type="radio" name="answer" value="c" />{{choiceC}}<br>
-                <input type="radio" name="answer" value="d" />{{choiceD}}<br>
+                <!-- <legend>answer options</legend> -->
+                <input type="radio" name="answer" value="a"> {{correct}}</input><br> {{#each possible}}
+                <input type="radio" name="answer" value="b"> {{this}}</input><br>{{/each}}
             </form>
         </div>
     </script>
-
-
 
     <script src="index.js"></script>
 
