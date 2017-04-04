@@ -19,25 +19,24 @@ function Quiz(quizQuestion, correctAnswer, possibleAnswers) {
         let destination = document.querySelector('.handlebars-demo');
         destination.innerHTML = html;
 
-        let correctAnswer = document.querySelector("span.answer");
+        let answer = document.querySelector("span.answer");
         let clickedAnswer = document.querySelector('.correct');
         clickedAnswer.addEventListener('click', theCorrectAnswer);
 
         function theCorrectAnswer(event) {
-          correctAnswer.innerText = "yippeeee";
+            answer.innerText = "yippeeee";
         }
 
+        let possibleAnswers = document.querySelectorAll('li.incorrect');
+        for (i = 0; i < possibleAnswers.length; i++) {
+            let li = possibleAnswers[i];
+            li.addEventListener('click', pickles);
+        }
 
-        // let possibleAnswers = document.querySelectorAll('li');
-        // for (i = 0; i < possibleAnswers.length; i++) {
-        //     let possibleAnswers = [i];
-        // }
-        //   let
-        //   rightAnswer.addEventListener('click', pickles)
-        //
-        // function pickles(event) {
-        //     console.log(event);
-        // }
+        function pickles(event) {
+          answer.innerText = "wroooooooog";
+        }
+
     }
 }
 
