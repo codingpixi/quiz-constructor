@@ -4,19 +4,12 @@ ToDo:
   * Answer to question
   * Three false answers
 
-Handlebar Notation
-  {{question}} The type that specifies what kind of event occured is
-  {{choiceA}} event type
-  - choiceB: even target
-  - choiceC: Both a and b
-  - choiceD: None of the mentioned
-  - answer: a
+In general, event handler is nothing but
+  a. function
+  b. interface
+  c. event
+  d. handler
 
-  The type that specifies what kind of event occured is
-    a. event type
-    b. even target
-    c. Both a and b
-    d. None of the mentioned
+Answer: a
 
-Answer : a
-Explanation : The event type is a string that specifies what kind of event occurred. The type “mousemove”, for example, means that the user moved the mouse.
+Explanation: An event handler is in general, a function that handles or responds to an event.

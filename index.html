@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <title>4.1: Quiz Question</title>
     <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 
 <body>
@@ -14,16 +15,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
 
     <script id="quiz-template" type="text/x-handlebars-template">
-        <div class="body">
+        <!-- <div class="body"> -->
 
             <p>{{question}}</p>
 
-            <form class="" action="index.html" method="post">
+            <!-- <form class="" action="index.html" method="post"> -->
                 <!-- <legend>answer options</legend> -->
-                <input type="radio" name="answer" value="a"> {{correct}}</input><br> {{#each possible}}
-                <input type="radio" name="answer" value="b"> {{this}}</input><br>{{/each}}
-            </form>
-        </div>
+                <ul>
+                  <li class="correct">{{correct}}</li>
+                  {{#each possible}}<li class="incorrect">{{this}}</li>{{/each}}
+                </ul>
+
+            <span class="answer"></span>
+        <!-- </div> -->
     </script>
 
     <script src="index.js"></script>
