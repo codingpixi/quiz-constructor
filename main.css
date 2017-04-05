@@ -1,6 +1,11 @@
-font-family: 'Roboto', sans-serif;
+* {
+    font-family: 'Slabo 27px', serif;
+}
 
-
-ul {
-
+h1 {
+  font-size: 6rem;
+  /*text-align: center;
+  color: #e91e63;
+  background-color: #eceaeb;
+  padding: 3rem 0 3rem 0;*/
 }
