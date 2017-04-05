@@ -4,16 +4,21 @@
 <head>
     <meta charset="utf-8">
     <title>4.2: Extending the Question Model</title>
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Slabo+27px" rel="stylesheet">
 </head>
 
 <body>
     <h1>Let's Quiz</h1>
+
+            <h3>Answer the Questions Below</h3>
     <section id="quiz"></section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
     <script id="question" type="text/x-handlebars-template">
-        <article>
-            <h1>Question</h1>
+
+        <article class="multi">
+
 
             <strong>{{text}}</strong>
             <ul>
@@ -21,6 +26,17 @@
                 <li>{{this}}</li>{{/each}}
             </ul>
             <span class="answer"></span>
+        </article>
+    </script>
+
+    <script id="shortAnswer" type="text/x-handlebars-template">
+        <article class="shortA">
+            <strong>{{text}}</strong>
+            <div>
+                <input type="text" placeholder="answer here">
+                <button class="submitButton">Submit</button>
+                <span class="shortAnswer"></span>
+            </div>
         </article>
 
     </script>
