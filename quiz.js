@@ -32,16 +32,17 @@ MultipleChoiceQuestion.prototype = Object.create(Question.prototype);
 MultipleChoiceQuestion.prototype.choices = function () {
   this.question = this.question + this.answer + this.choices;
 }
-let q1 = new MultipleChoiceQuestion ('q1', 'a1', ['a1', 'a2', 'a3', 'a4']);
-let q2 = new MultipleChoiceQuestion ('q2', 'a1', ['a1', 'a2', 'a3', 'a4']);
-let q3 = new MultipleChoiceQuestion ('q3', 'a1', ['a1', 'a2', 'a3', 'a4']);
-let q4 = new MultipleChoiceQuestion ('q4', 'a1', ['a1', 'a2', 'a3', 'a4']);
-let q5 = new MultipleChoiceQuestion ('q5', 'a1', ['a1', 'a2', 'a3', 'a4']);
-// function ShortAnswerQuestion (openAnswer) {
-//   this.openAnswer = openAnswer;
-// }
+let q1 = new MultipleChoiceQuestion ('q1', 'a1', ['a1', 'b1', 'c1', 'd1']);
+let q2 = new MultipleChoiceQuestion ('q2', 'b2', ['a2', 'b2', 'b3', 'b4']);
+let q3 = new MultipleChoiceQuestion ('q3', 'a3', ['a3', 'b3', 'c3', 'd4']);
+let q4 = new MultipleChoiceQuestion ('q4', 'd4', ['a4', 'b4', 'c4', 'd4']);
+let q5 = new MultipleChoiceQuestion ('q5', 'c5', ['a5', 'b5', 'c5', 'd5']);
+
+function ShortAnswerQuestion (openAnswer) {
+  this.openAnswer = openAnswer;
+}
 
 
 // let q1 = new Question("q1", ['a1', 'a2', 'a3', 'a4']);
-let q2 = new Question("q2", ['b1', 'b2', 'b3', 'b4'], 'an array');
-[q1, q2].forEach(question => question.display());
+// let q2 = new Question("q2", ['b1', 'b2', 'b3', 'b4'], 'an array');
+[q1, q2, q3, q4, q5].forEach(question => question.display());
