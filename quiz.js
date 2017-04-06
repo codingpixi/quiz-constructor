@@ -15,14 +15,21 @@
 //
 // }
 
-
-fetch('https://opentdb.com/api.php?amount=5&category=16&difficulty=hard&type=multiple')
+//Multiple Choice Questions
+fetch('https://opentdb.com/api.php?amount=5&category=11&difficulty=hard&type=multiple')
 .then(response => response.json())
 .then (object => object.results)
 .then (apiArr => apiArr.map(getData))//getData is being invoked by running it through getData
 .then (apiArr => apiArr.forEach(question => question.display()));
 // .then(jsonData => console.log(jsonData))
 
+//True or False Questions
+// fetch('https://opentdb.com/api.php?amount=5&category=11&difficulty=medium&type=boolean')
+// .then(response => response.json())
+// .then (object => object.results)
+// .then (apiArr => apiArr.map(getData))//getData is being invoked by running it through getData
+// .then (apiArr => apiArr.forEach(question => question.display()));
+// .then(jsonData => console.log(jsonData))
 
 
 function getData(thisIsAnObject) {
@@ -80,8 +87,6 @@ function MultipleChoiceQuestion (text, answer, choices){
   console.log(answer);
 }
 
-// MultipleChoiceQuestion.prototype = Object.create(Question.prototype);
-
 MultipleChoiceQuestion.prototype.choices = function () {
   this.question = this.question + this.answer + this.choices;
 }
@@ -91,18 +96,6 @@ function ShortAnswerQuestion (text,answer) {
   console.log(answer);
 }
 
-
-// let q1 = new MultipleChoiceQuestion ('JavaScript is …', 'object based', ['subjective', 'objective', 'evil', 'object based']);
-//
-// let q2 = new MultipleChoiceQuestion ('Which of the following variable types does not exist in JavaScript?', 'double', ['boolean', 'number', 'object', 'double']);
-//
-// let q3 = new MultipleChoiceQuestion ('What does the “break” statement do?', 'Aborts the current loop or switch statement.', ['Cancels the current event.', 'Aborts the current function.', 'Aborts the current loop or switch statement.', 'Simulates a JavaScript crash.']);
-//
-// let q4 = new MultipleChoiceQuestion ('Who is the instructor of TIY Front End Engineering course?', 'Brian', ['Luigi', 'Brian', 'Susanna', 'Logan']);
-//
-// let q5 = new MultipleChoiceQuestion ('What year was JavaScript created?', '1995', ['1970', '1983', '1995', '2030']);
-//
-// let q6 = new ShortAnswerQuestion ('What BootCamp are you currently attending?', 'The Iron Yard');
 
 // [q1, q2, q3, q4, q5].forEach(question => question.display());
 // [q6].forEach(question => question.displaySA());
