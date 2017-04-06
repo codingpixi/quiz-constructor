@@ -16,6 +16,12 @@
 // }
 
 
+fetch('https://opentdb.com/api.php?amount=5&category=16&difficulty=hard&type=multiple')
+.then(response => response.json())
+.then (object => object.results)
+.then (apiArr => apiArr.map(getData))//getData is being invoked by running it through getData
+.then (apiArr => apiArr.forEach(question => question.display()));
+// .then(jsonData => console.log(jsonData))
 
 
 
@@ -86,7 +92,7 @@ function ShortAnswerQuestion (text,answer) {
 }
 
 
-let q1 = new MultipleChoiceQuestion ('JavaScript is …', 'object based', ['subjective', 'objective', 'evil', 'object based']);
+// let q1 = new MultipleChoiceQuestion ('JavaScript is …', 'object based', ['subjective', 'objective', 'evil', 'object based']);
 //
 // let q2 = new MultipleChoiceQuestion ('Which of the following variable types does not exist in JavaScript?', 'double', ['boolean', 'number', 'object', 'double']);
 //
@@ -98,8 +104,6 @@ let q1 = new MultipleChoiceQuestion ('JavaScript is …', 'object based', ['subj
 //
 // let q6 = new ShortAnswerQuestion ('What BootCamp are you currently attending?', 'The Iron Yard');
 
-
-
 // [q1, q2, q3, q4, q5].forEach(question => question.display());
 // [q6].forEach(question => question.displaySA());
 
@@ -109,9 +113,3 @@ let q1 = new MultipleChoiceQuestion ('JavaScript is …', 'object based', ['subj
 // ShortAnswerQuestion.prototype.choices = function () {
 //   this.question = this.question + this.answer;
 // }
-fetch('https://opentdb.com/api.php?amount=5&category=16&difficulty=medium')
-.then(response => response.json())
-.then (object => object.results)
-.then (apiArr => apiArr.map(getData))//getData is being invoked by running it through getData
-.then (apiArr => apiArr.forEach(question => question.display()));
-// .then(jsonData => console.log(jsonData))
