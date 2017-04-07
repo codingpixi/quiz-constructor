@@ -21,7 +21,7 @@ fetch('https://opentdb.com/api.php?amount=5&category=11&difficulty=hard&type=mul
 .then (object => object.results)
 .then (apiArr => apiArr.map(getData))//getData is being invoked by running it through getData
 .then (apiArr => apiArr.forEach(question => question.display()));
-// .then(jsonData => console.log(jsonData))  
+// .then(jsonData => console.log(jsonData))
 
 //True or False Questions
 fetch('https://opentdb.com/api.php?amount=5&category=11&difficulty=easy&type=boolean')
@@ -41,7 +41,6 @@ function getData(thisIsAnObject) {
 function Question(text, answer) {
     this.text = text;
     this.answer = answer;
-    // this.choices = choices;
 
     this.isCorrect = function(event) {
         let li = event.target;
@@ -52,12 +51,14 @@ function Question(text, answer) {
             answerSpace.textContent = "Nada";
         }
     }
-    this.display = function() {
-        let source = document.querySelector('#question').innerHTML;
-        let template = Handlebars.compile(source);
-        let html = template(this);
-        document.querySelector('#quiz').insertAdjacentHTML('beforeend', html);
-        document.querySelector('#quiz article.multi:last-of-type ul').addEventListener('click', this.isCorrect.bind(this))
+    //this.display = function() {
+    //    document.querySelector('#quiz article.multi:last-of-type ul').addEventListener('click', this.isCorrect.bind(this))
+    //}
+    this.genericDisplay = function(question){
+      let source = document.querySelector(question).innerHTML;
+      let template = Handlebars.compile(source);
+      let html = template(this);
+      document.querySelector('#quiz').insertAdjacentHTML('beforeend', html);
     }
 
     this.isCorrectSA = function(event) {
@@ -72,11 +73,7 @@ function Question(text, answer) {
         }
     }
     this.displaySA = function() {
-        let source = document.querySelector('#shortAnswer').innerHTML;
-        let template = Handlebars.compile(source);
-        let html = template(this);
-        document.querySelector('#quiz').insertAdjacentHTML('beforeend', html);
-        document.querySelector('#quiz article.shortA:last-of-type button.submitButton').addEventListener('click', this.isCorrectSA.bind(this))
+        document.querySelector('#question article.shortA:last-of-type button.submitButton').addEventListener('click', this.isCorrectSA.bind(this))
     }
 
 }
@@ -87,8 +84,12 @@ function MultipleChoiceQuestion (text, answer, choices){
   console.log(answer);
 }
 
-MultipleChoiceQuestion.prototype.choices = function () {
-  this.question = this.question + this.answer + this.choices;
+MultipleChoiceQuestion.prototype.display = function () {
+  this.genericDisplay('#question')//This line is telling js to do all of the following that now lives in the genericDisplay area above
+  // let source = document.querySelector('#question').innerHTML;
+  // let template = Handlebars.compile(source);
+  // let html = template(this);
+  // document.querySelector('#quiz').insertAdjacentHTML('beforeend', html);
 }
 
 function ShortAnswerQuestion (text,answer) {
@@ -96,13 +97,18 @@ function ShortAnswerQuestion (text,answer) {
   console.log(answer);
 }
 
+ShortAnswerQuestion.prototype.display = function () {
+  this.genericDisplay('#shortAnswer')
+  // let source = document.querySelector('#shortAnswer').innerHTML;
+  // let template = Handlebars.compile(source);
+  // let html = template(this);
+  // document.querySelector('#quiz').insertAdjacentHTML('beforeend', html);
+}
 
-// [q1, q2, q3, q4, q5].forEach(question => question.display());
-// [q6].forEach(question => question.displaySA());
+
+
+
+// [q1, q2, q3, q4, q5, q6].forEach(question => question.display());
 
 
 // ShortAnswerQuestion.prototype = Object.create(Question.prototype);
-
-// ShortAnswerQuestion.prototype.choices = function () {
-//   this.question = this.question + this.answer;
-// }
