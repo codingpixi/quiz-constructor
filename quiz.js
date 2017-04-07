@@ -21,7 +21,7 @@ fetch('https://opentdb.com/api.php?amount=5&category=11&difficulty=hard&type=mul
 .then (object => object.results)
 .then (apiArr => apiArr.map(getData))//getData is being invoked by running it through getData
 .then (apiArr => apiArr.forEach(question => question.display()));
-// .then(jsonData => console.log(jsonData))
+// .then(jsonData => console.log(jsonData))  
 
 //True or False Questions
 fetch('https://opentdb.com/api.php?amount=5&category=11&difficulty=easy&type=boolean')
