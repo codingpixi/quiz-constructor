@@ -42,32 +42,11 @@ function Question(text, answer) {
     this.text = text;
     this.answer = answer;
 
-    this.isCorrect = function(provideFeedback) {
-        let li = event.target;
-        let answerSpace = li.parentElement.nextElementSibling;
-    }
-
     this.genericDisplay = function(question) {
         let source = document.querySelector(question).innerHTML;
         let template = Handlebars.compile(source);
         let html = template(this);
         document.querySelector('#quiz').insertAdjacentHTML('beforeend', html);
-    }
-
-    this.isCorrectSA = function(provideFeedback) {
-        let submit = event.target;
-        let pickles = submit.previousElementSibling;
-        let picklesInput = pickles.value;
-        let yourAnswer = submit.nextElementSibling;
-    }
-
-    this.provideFeedback = function(li, answerSpace){
-      this.isCorrect()
-      if (li.textContent === this.answer) {
-          answerSpace.textContent = "Exactly My Dear Watson!";
-      } else {
-          answerSpace.textContent = "Nada";
-      }
     }
 }
 
@@ -82,24 +61,17 @@ MultipleChoiceQuestion.prototype.display = function() {
     document.querySelector('#quiz article.multi:last-of-type ul').addEventListener('click', this.isCorrect.bind(this))
 }
 
-function ShortAnswerQuestion(text, answer) {
-    Question.call(this, text, answer);
-    console.log(answer);
+
+MultipleChoiceQuestion.prototype.isCorrect = function (event) {
+    let li = event.target;
+    let feedbackSpace = li.parentElement.nextElementSibling;
+    this.provideFeedback(li, feedbackSpace);
 }
 
-ShortAnswerQuestion.prototype.display = function() {
-    this.genericDisplay('#shortAnswer')
-    document.querySelector('#question article.shortA:last-of-type button.submitButton').addEventListener('click', this.isCorrectSA.bind(this))
+MultipleChoiceQuestion.prototype.provideFeedback = function(li, feedbackSpace){
+  if (li.textContent === this.answer) {
+      feedbackSpace.textContent = "Exactly My Dear Watson!";
+  } else {
+      feedbackSpace.textContent = "Nada";
+  }
 }
-
-
-// [q1, q2, q3, q4, q5, q6].forEach(question => question.display());
-
-// ShortAnswerQuestion.prototype = Object.create(Question.prototype);
-
-// this.display = function() {
-//
-// }
-// this.displaySA = function() {
-//
-// }
